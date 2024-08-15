@@ -1,28 +1,29 @@
-def get_leather_scraps():
-    inventory = [
-        "Healing Potion",
-        "Leather Scraps",
-        "Iron Helmet",
-        "Bread",
-        "Shortsword",
-    ]
-
-    item_index = 1
-
-    return inventory[item_index]
+def get_first_item(items):
+    if(items):
+        return items[0]
+    else:
+        return "ERROR"
 
 run_cases = [
-    ("Leather Scraps",),
+    ([1, 2], 1),
+    (["Healing Potion"], "Healing Potion"),
+    ([], "ERROR"),
 ]
 
 submit_cases = run_cases + [
-    ("Leather Scraps",),
+    (["Iron Ore", "Iron Bar", "Scimitar"], "Iron Ore"),
+    (["Apple", "Banana", "Cherry"], "Apple"),
+    ([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [1, 2, 3]),
+    ([False, True, False], False),
+    ([None, "None", 0], None),
 ]
 
-def test(expected_output):
+
+def test(input1, expected_output):
     print("---------------------------------")
+    print(f"Input: {input1}")
     print(f"Expecting: {expected_output}")
-    result = get_leather_scraps()
+    result = get_first_item(input1)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")

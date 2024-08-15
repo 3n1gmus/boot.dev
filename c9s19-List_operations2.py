@@ -1,28 +1,43 @@
-def get_leather_scraps():
-    inventory = [
-        "Healing Potion",
-        "Leather Scraps",
-        "Iron Helmet",
-        "Bread",
-        "Shortsword",
+def is_top_weapon(weapon):
+    top_weapons = [
+        "sword of justice",
+        "sword of slashing",
+        "stabby daggy",
+        "great axe",
+        "silver bow",
+        "spellbook",
+        "spiked knuckles",
     ]
 
-    item_index = 1
+    # don't touch above this line
+    result = False
+    if(weapon in top_weapons):
+        result = True
 
-    return inventory[item_index]
+    return result
 
 run_cases = [
-    ("Leather Scraps",),
+    ("sword of justice", True),
+    ("bronze mace", False),
+    ("sword of slashing", True),
 ]
 
 submit_cases = run_cases + [
-    ("Leather Scraps",),
+    ("", False),
+    ("great axe", True),
+    ("silver bow", True),
+    ("golden spear", False),
+    ("spiked knuckles", True),
+    ("spellbook", True),
 ]
 
-def test(expected_output):
+
+def test(input1, expected_output):
     print("---------------------------------")
+    print(f"Input:")
+    print(f" * Weapon: {input1}")
     print(f"Expecting: {expected_output}")
-    result = get_leather_scraps()
+    result = is_top_weapon(input1)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
